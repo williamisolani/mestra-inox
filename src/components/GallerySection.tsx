@@ -24,6 +24,7 @@ const GallerySection = () => (
   <section id="galeria" className="py-20 md:py-28 bg-background">
     <div className="container">
       <AnimatedSection className="text-center mb-12">
+        <p className="text-accent font-bold text-sm tracking-widest uppercase mb-3">Nossos Projetos</p>
         <h2 className="text-3xl md:text-5xl font-extrabold text-foreground mb-4">
           Portfólio
         </h2>
@@ -31,7 +32,7 @@ const GallerySection = () => (
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-6xl mx-auto mb-10">
         {images.map((img, i) => (
-          <AnimatedSection key={i} delay={i * 0.05} className="overflow-hidden rounded-lg aspect-square group">
+          <AnimatedSection key={i} delay={i * 0.05} className="overflow-hidden rounded-xl aspect-square group">
             <img
               src={img.src}
               alt={img.alt}

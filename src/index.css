@@ -6,44 +6,49 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 180 10% 10%;
+    --background: 210 20% 98%;
+    --foreground: 215 35% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 180 10% 10%;
+    --card-foreground: 215 35% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 180 10% 10%;
+    --popover-foreground: 215 35% 15%;
 
-    --primary: 172 60% 22%;
+    --primary: 215 55% 18%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 172 25% 92%;
-    --secondary-foreground: 172 60% 15%;
+    --secondary: 210 20% 94%;
+    --secondary-foreground: 215 55% 18%;
 
-    --muted: 170 15% 95%;
-    --muted-foreground: 170 10% 40%;
+    --muted: 210 15% 96%;
+    --muted-foreground: 215 15% 45%;
 
-    --accent: 45 90% 55%;
-    --accent-foreground: 45 90% 15%;
+    --accent: 40 95% 52%;
+    --accent-foreground: 215 55% 12%;
 
     --accent-red: 0 75% 50%;
     --accent-red-foreground: 0 0% 100%;
 
-    --accent-purple: 270 60% 50%;
-    --accent-purple-foreground: 0 0% 100%;
+    --accent-blue: 205 80% 50%;
+    --accent-blue-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 170 20% 88%;
-    --input: 170 20% 88%;
-    --ring: 172 60% 22%;
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 215 55% 18%;
 
     --radius: 0.5rem;
 
-    --section-dark: 172 55% 14%;
-    --section-dark-foreground: 170 20% 95%;
+    --section-dark: 215 50% 12%;
+    --section-dark-foreground: 210 20% 96%;
+
+    --navy: 215 55% 18%;
+    --navy-light: 215 40% 25%;
+    --steel: 210 10% 55%;
+    --steel-light: 210 15% 85%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -84,8 +89,8 @@
     color: hsl(var(--accent-red));
   }
 
-  .text-accent-purple {
-    color: hsl(var(--accent-purple));
+  .text-accent-blue {
+    color: hsl(var(--accent-blue));
   }
 
   .bg-accent-yellow {
@@ -96,29 +101,27 @@
     background-color: hsl(var(--accent-red));
   }
 
-  .bg-accent-purple {
-    background-color: hsl(var(--accent-purple));
+  .bg-accent-blue {
+    background-color: hsl(var(--accent-blue));
   }
 
-  .geometric-corner::before {
-    content: '';
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background-color: hsl(var(--accent));
-    clip-path: polygon(0 0, 100% 0, 0 100%);
-    opacity: 0.7;
+  .bg-navy {
+    background-color: hsl(var(--navy));
   }
 
-  .geometric-corner::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 40px;
-    height: 40px;
-    background-color: hsl(var(--accent-red));
-    clip-path: polygon(100% 0, 100% 100%, 0 100%);
-    opacity: 0.6;
+  .bg-navy-light {
+    background-color: hsl(var(--navy-light));
+  }
+
+  .text-steel {
+    color: hsl(var(--steel));
+  }
+
+  .bg-steel-light {
+    background-color: hsl(var(--steel-light));
+  }
+
+  .gradient-navy {
+    background: linear-gradient(135deg, hsl(var(--navy)), hsl(var(--navy-light)));
   }
 }
