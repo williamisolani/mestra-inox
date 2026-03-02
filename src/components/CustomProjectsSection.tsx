@@ -1,53 +1,68 @@
 import AnimatedSection from "./AnimatedSection";
 import { WHATSAPP_LINK } from "@/lib/constants";
+import projetoImg from "@/assets/projeto-completo.jpg";
 
 const steps = [
-  { num: "01", title: "Entendimento da operação" },
-  { num: "02", title: "Projeto e detalhamento" },
-  { num: "03", title: "Fabricação" },
-  { num: "04", title: "Entrega" },
+  { num: "01", title: "Entendimento", desc: "Análise da operação, fluxo e necessidades." },
+  { num: "02", title: "Projeto", desc: "Detalhamento técnico e layout personalizado." },
+  { num: "03", title: "Fabricação", desc: "Produção em fábrica própria com inox certificado." },
+  { num: "04", title: "Entrega", desc: "Instalação e acompanhamento técnico." },
 ];
 
 const CustomProjectsSection = () => (
   <section id="sobmedida" className="py-20 md:py-28 bg-background">
     <div className="container">
-      <AnimatedSection className="max-w-3xl mx-auto text-center mb-14">
-        <h2 className="text-3xl md:text-5xl font-extrabold text-foreground mb-6">
-          Cada operação tem uma necessidade.{" "}
-          <span className="text-primary">Cada cozinha, uma solução.</span>
-        </h2>
-        <p className="text-muted-foreground text-lg">
-          Desenvolvemos projetos sob medida para restaurantes, hotéis, indústrias e operações de todos os portes.
-        </p>
-      </AnimatedSection>
+      <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        {/* Image side */}
+        <AnimatedSection className="rounded-xl overflow-hidden">
+          <img
+            src={projetoImg}
+            alt="Projeto completo de cozinha industrial Mestra Inox"
+            className="w-full h-[400px] object-cover rounded-xl"
+            loading="lazy"
+          />
+        </AnimatedSection>
 
-      {/* Timeline */}
-      <div className="max-w-4xl mx-auto mb-12">
-        <div className="grid sm:grid-cols-4 gap-6">
-          {steps.map((step, i) => (
-            <AnimatedSection key={step.num} delay={i * 0.1} className="relative text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground font-extrabold text-xl mb-4">
-                {step.num}
-              </div>
-              {i < 3 && (
-                <div className="hidden sm:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-border" />
-              )}
-              <p className="font-bold text-foreground">{step.title}</p>
-            </AnimatedSection>
-          ))}
+        {/* Content side */}
+        <div>
+          <AnimatedSection>
+            <p className="text-accent font-bold text-sm tracking-widest uppercase mb-3">Projetos Sob Medida</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">
+              Cada operação tem uma necessidade.{" "}
+              <span className="text-primary">Cada cozinha, uma solução.</span>
+            </h2>
+            <p className="text-muted-foreground text-lg mb-8">
+              Desenvolvemos projetos sob medida para restaurantes, hotéis, indústrias e operações de todos os portes.
+            </p>
+          </AnimatedSection>
+
+          {/* Steps */}
+          <div className="space-y-6 mb-8">
+            {steps.map((step, i) => (
+              <AnimatedSection key={step.num} delay={i * 0.1} className="flex gap-4 items-start">
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary text-primary-foreground font-extrabold text-lg flex items-center justify-center">
+                  {step.num}
+                </div>
+                <div>
+                  <h3 className="font-bold text-foreground">{step.title}</h3>
+                  <p className="text-muted-foreground text-sm">{step.desc}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection delay={0.3}>
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-accent text-accent-foreground px-8 py-4 rounded-md font-bold hover:brightness-110 transition text-lg"
+            >
+              Falar com um especialista
+            </a>
+          </AnimatedSection>
         </div>
       </div>
-
-      <AnimatedSection className="text-center">
-        <a
-          href={WHATSAPP_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-accent text-accent-foreground px-8 py-4 rounded-md font-bold hover:brightness-110 transition text-lg"
-        >
-          Falar com um especialista
-        </a>
-      </AnimatedSection>
     </div>
   </section>
 );
