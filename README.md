@@ -1,73 +1,155 @@
-# Welcome to your Lovable project
+## Mestra Inox – Landing Page
 
-## Project info
+Landing page institucional para a **Mestra Inox**, focada em apresentação da marca, diferenciais e geração de leads por **WhatsApp** e **formulário de contato**.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+---
 
-## How can I edit this code?
+## Tecnologias
 
-There are several ways of editing your application.
+- **Vite** (build tool)
+- **React** + **TypeScript**
+- **React Router**
+- **Tailwind CSS**
+- **shadcn-ui**
+- **lucide-react** (ícones)
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Como rodar o projeto
 
-Changes made via Lovable will be committed automatically to this repo.
+### Requisitos
 
-**Use your preferred IDE**
+- Node.js 18+ (recomendado)
+- npm (ou pnpm/yarn, se preferir adaptar os comandos)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Passos
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+```bash
+# instalar dependências
+npm install
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# ambiente de desenvolvimento
 npm run dev
+
+# build de produção
+npm run build
+
+# pré-visualizar o build
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+Por padrão, o Vite sobe em algo como `http://localhost:5173`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## Estrutura principal
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Principais arquivos/pastas:
 
-## What technologies are used for this project?
+- `src/main.tsx` – bootstrap do React + Provider de tema/shadcn/etc.
+- `src/App.tsx` – provedores globais (React Query, toasts, tooltip) e rotas.
+- `src/pages/Index.tsx` – página principal (home), que monta todas as seções.
+- `src/components/`
+  - `Header.tsx` – cabeçalho fixo com:
+    - Tarja superior de contato (telefone, e‑mail, horário).
+    - Navegação por âncoras (`#porque`, `#solucoes`, `#sobmedida`, `#galeria`, `#contato`).
+    - Botão de WhatsApp “Solicitar orçamento”.
+  - `HeroSection.tsx` – seção hero com imagem de fundo, headline e CTAs:
+    - Botão **“Fale com um Consultor”** (WhatsApp).
+    - Botão **“Linha de Produtos”** (scroll para a seção de soluções).
+  - `WhySection.tsx`, `SolutionsSection.tsx`, `CustomProjectsSection.tsx`,
+    `InoxSection.tsx`, `SegmentsSection.tsx`, `GallerySection.tsx` – seções de conteúdo
+    apresentando diferenciais, linhas de produtos, projetos sob medida, inox, segmentos atendidos e galeria.
+  - `ContactSection.tsx` – seção de contato com:
+    - Bloco de WhatsApp com CTA forte.
+    - Dados de contato (telefone, e‑mail, endereço) clicáveis.
+    - Formulário de orçamento (estado local de “enviado”, sem backend por padrão).
+  - `FooterSection.tsx` – rodapé com:
+    - Logo Mestra Inox.
+    - Mini descrição institucional.
+    - Navegação por âncoras.
+    - Contatos (telefone, e‑mail, endereço) clicáveis.
+    - Ícones de redes sociais (Instagram, Facebook, LinkedIn).
+  - `AnimatedSection.tsx` – wrapper para animações de entrada suave das seções.
+- `src/lib/constants.ts` – centraliza os **dados de contato** e o **link de WhatsApp**.
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Configurando os dados da empresa
 
-## How can I deploy this project?
+Todas as informações de contato e links principais ficam em `src/lib/constants.ts`:
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## Comportamentos importantes
 
-## Can I connect a custom domain to my Lovable project?
+- **Header fixo**
+  - Tarja de contato (desktop) fixa no topo.
+  - Logo e navegação logo abaixo, também fixos, com proporção ajustada (1/3 logo, 2/3 menu).
 
-Yes, you can!
+- **Links de contato clicáveis**
+  - Telefone: `tel:` com número somente em dígitos.
+  - E‑mail: `mailto:`.
+  - Endereço: abre o Google Maps com busca para o endereço:
+    - `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONTACT.address)}`.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- **WhatsApp como principal canal de conversão**
+  - Hero, seção de contato e pós-envio do formulário direcionam para o WhatsApp usando `WHATSAPP_LINK`.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- **Responsividade**
+  - Layout em grid/flex com breakpoints Tailwind (`sm`, `md`, `lg`).
+  - Cuidados específicos em:
+    - Hero: `padding-bottom` extra para evitar que o bloco de benefícios (fixo no bottom do hero) sobreponha os botões no mobile.
+    - Header/menus: navegação desktop e menu mobile (hambúrguer).
+
+---
+
+## Formulário de contato
+
+O formulário da `ContactSection` atualmente:
+
+- Usa estado local (`submitted`) para exibir uma mensagem de sucesso após o envio.
+- **Não envia dados para nenhum backend** por padrão.
+
+Para integrar com uma API (por exemplo, enviar para um CRM ou e‑mail):
+
+- Adapte a função `handleSubmit` em `src/components/ContactSection.tsx` para:
+  - Prevenir o submit padrão (já está feito).
+  - Coletar os valores dos campos.
+  - Chamar um endpoint (via `fetch` ou `react-query`).
+  - Tratar estados de loading/erro/sucesso.
+
+---
+
+## Customização
+
+Alguns pontos comuns de customização:
+
+- **Logo**
+  - Substituir o arquivo `src/assets/logo-mestra-inox.png` pela nova marca (mantendo o mesmo nome ou ajustando os imports).
+
+- **Textos e seções**
+  - Headline, subtítulos e descrições estão espalhados pelas seções em `src/components/*Section.tsx`.
+  - É possível adicionar/remover cards de produtos, segmentos etc. diretamente nos arrays de cada seção.
+
+- **Cores e tema**
+  - As cores principais (`primary`, `accent`) vêm do Tailwind/shadcn (ver `tailwind.config.ts` e tema shadcn).
+  - `accent` é usado para destaques/CTAs (amarelo).
+
+---
+
+## Deploy
+
+O projeto é um front-end estático; após `npm run build`, a pasta `dist/` pode ser servida em qualquer serviço de hospedagem estática, por exemplo:
+
+- Vercel
+- Netlify
+- GitHub Pages
+- Static hosting em servidores próprios
+
+A configuração específica depende da plataforma escolhida (normalmente basta apontar para a pasta `dist`).
+
+---
+
+## Licença
+
+Este projeto é de uso interno para a Mestra Inox (ou para quem o mantiver).  
+Defina aqui a licença apropriada (por exemplo, MIT, privativo, etc.), se necessário.
