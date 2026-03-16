@@ -9,27 +9,27 @@ import { ArrowRight } from "lucide-react";
 
 const solutions = [
   {
-    title: "Bancadas e Mesas",
+    title: "Bancadas e mesas",
     text: "Uso intenso, fácil higienização e longa vida útil para cozinhas profissionais.",
     img: bancadaImg,
   },
   {
-    title: "Cocção Industrial",
+    title: "Cocção industrial",
     text: "Potência, segurança e robustez para operações que exigem performance.",
     img: coccaoImg,
   },
   {
-    title: "Estantes e Prateleiras",
+    title: "Estantes e prateleiras",
     text: "Resistência, modularidade, higiene e excelente custo-benefício.",
     img: estantesImg,
   },
   {
-    title: "Lavagem Profissional",
+    title: "Lavagem profissional",
     text: "Facilidade de limpeza, fluxo eficiente e durabilidade para uso intenso.",
     img: lavagemImg,
   },
   {
-    title: "Projetos Completos",
+    title: "Projetos completos",
     text: "Cada cozinha, uma solução sob medida. Da concepção à instalação.",
     img: projetoImg,
     featured: true,
@@ -45,7 +45,7 @@ const SolutionsSection = () => (
         </p>
         <h2 className="text-3xl md:text-5xl font-extrabold text-foreground mb-4">
           Equipamentos para{" "}
-          <span className="text-primary">Cozinha Industrial</span>
+          <span className="text-primary">cozinha industrial</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
           Linhas completas em aço inox para cozinhas profissionais de todos os

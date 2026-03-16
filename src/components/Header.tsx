@@ -26,7 +26,7 @@ const Header = () => {
             </span>
             <span>{CONTACT.email}</span>
           </div>
-          <span>Seg a Sex — 08:00 às 18:00</span>
+          <span>Seg a Sex - 8h às 18h</span>
         </div>
       </div>
 

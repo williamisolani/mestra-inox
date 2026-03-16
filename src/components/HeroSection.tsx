@@ -35,8 +35,8 @@ const HeroSection = () => (
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-[1.1] mb-6">
-            Cozinhas Industriais e{" "}
-            <span className="text-accent">Profissionais</span>
+            Cozinhas industriais e{" "}
+            <span className="text-accent">profissionais</span>
           </h1>
 
           <p className="text-lg md:text-xl text-primary-foreground/80 max-w-xl mb-3">
@@ -87,17 +87,17 @@ const HeroSection = () => (
           {[
             {
               icon: Factory,
-              title: "Fabricação Própria",
+              title: "Fabricação própria",
               desc: "Direto da fábrica para sua operação",
             },
             {
               icon: ShieldCheck,
-              title: "Inox de Alto Padrão",
+              title: "Inox de alto padrão",
               desc: "Composição controlada e certificada",
             },
             {
               icon: Award,
-              title: "30 Anos no Mercado",
+              title: "30 anos no mercado",
               desc: "Experiência comprovada em projetos",
             },
           ].map((item, i) => (
